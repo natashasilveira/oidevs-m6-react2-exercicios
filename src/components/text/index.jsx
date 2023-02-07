@@ -1,10 +1,10 @@
-import './text.css';
+// import styles from './text.module.css';
+import { styles } from './styles'
+
 
 export const Text = (props) => {
-  const classes = props.bold ? 'bold' : '';
-
   return (
-    <div className={classes}>
+    <div style={styles.title}>
       {props.children}
     </div>
   )

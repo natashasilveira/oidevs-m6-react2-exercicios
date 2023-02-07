@@ -6,6 +6,7 @@ import { Header } from './components/header'
 import { Avatar } from './components/avatar'
 import { Text } from './components/text'
 import { Button } from './components/button'
+import { TextSecond } from './components/text/text-second'
 
 const items = [
   'Página Inicial',
@@ -23,7 +24,9 @@ function App() {
 
   return (
     <>
-      <Navbar>
+    <Text bold>Texto</Text>
+    <TextSecond>Segundo Texto</TextSecond>
+      {/* <Navbar>
         <Title />
         {items.map((item) => (
           <NavItem key={item} text={item} />
@@ -37,7 +40,7 @@ function App() {
         <Text>211 publicações</Text>
         <Text>44,2k seguidores</Text>
         <Text>2 seguindo</Text>
-      </Header>
+      </Header> */}
     </>
   )
 }
