@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-    <Text bold>Texto</Text>
+    <Text color="green" bold>Texto</Text>
     <TextSecond>Segundo Texto</TextSecond>
       {/* <Navbar>
         <Title />
