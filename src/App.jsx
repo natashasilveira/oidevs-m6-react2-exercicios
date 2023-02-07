@@ -6,7 +6,6 @@ import { Header } from './components/header'
 import { Avatar } from './components/avatar'
 import { Text } from './components/text'
 import { Button } from './components/button'
-import { TextSecond } from './components/text/text-second'
 
 const items = [
   'Página Inicial',
@@ -25,7 +24,8 @@ function App() {
   return (
     <>
     <Text color="green" bold>Texto</Text>
-    <TextSecond>Segundo Texto</TextSecond>
+    <Text color="red" bold>Texto</Text>
+    <Text bold>Texto</Text>
       {/* <Navbar>
         <Title />
         {items.map((item) => (

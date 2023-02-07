@@ -1,7 +1,6 @@
 // import { styles } from './styles'
 
-import styled from "styled-components"
-
+import * as S from './styles'
 // export const Text = (props) => {
 //   return (
 //     <div style={styles.title}>
@@ -10,11 +9,8 @@ import styled from "styled-components"
 //   )
 // } 
 
-export const TextWrapper = styled.p`
-  color: ${(props) => (props.color || 'blue')};
-  font-weight: ${(props) => (props.bold ? '800' : '')};
-`;
+
 
 export const Text = (props) => {
-  return <TextWrapper>{props.children} || 😁</TextWrapper>
+  return <S.TextWrapper {...props}>{props.children} || 😁</S.TextWrapper>
 }
