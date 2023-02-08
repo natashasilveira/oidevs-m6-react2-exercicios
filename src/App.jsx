@@ -1,16 +1,21 @@
 // import './App.css'
 import { Navbar } from './components/navbar'
 import { Header } from './components/header'
+import { Grid, GridItem } from './ui/grid'
 
 
-function App() {
+export const App = () => {
 
   return (
-    <>
-      <Navbar />
-      <Header />
-    </>
+    <Grid display='grid' templateColumns='1fr 4fr'>
+      <GridItem>
+        <Navbar />
+      </GridItem>
+      <GridItem>
+        <Header />
+      </GridItem>
+    </Grid>
   )
 }
 
-export default App
+// export default App;

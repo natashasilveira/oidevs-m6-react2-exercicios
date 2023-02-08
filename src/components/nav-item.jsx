@@ -1,9 +1,9 @@
-
+import { Text } from "../ui/text"
 
 export const NavItem = ({ text }) => {
   return (
-    <div>
+    <Text>
       {text}
-    </div>
+    </Text>
   )
 }
