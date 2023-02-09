@@ -18,7 +18,7 @@ export const App = () => {
   }, [])
 
   return (
-    <Grid display='grid' templateColumns='20% 80%'>
+    <Grid templateColumns='20% 80%'>
       <GridItem>
         <Navbar />
       </GridItem>
