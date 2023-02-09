@@ -11,16 +11,22 @@ export const App = () => {
 
   const [photos, setPhotos] = React.useState([]); 
 
-  useEffect(() => {
-    const makeRequest = async () => {
-      const response = await fetcher('photos');
-      setPhotos((prevPhotos) => {
-        return [...prevPhotos, ...response]
-      });
-    };
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     const response = await fetcher('photos');
+  //     setPhotos((prevPhotos) => {
+  //       return [...prevPhotos, ...response]
+  //     });
+  //   };
 
-    makeRequest();
-  }, []);
+  //   makeRequest();
+  // }, []);
+
+  const [text, setText] = React.useState('');
+
+  useEffect(() => {
+    console.log(text);
+  }, [text])
 
   return (
     <Grid templateColumns='20% 80%'>
@@ -30,7 +36,11 @@ export const App = () => {
       <GridItem>
         <Header />
         <HighLights />
-        {photos.map(photo => <img key={photo.id} src={photo.urls.small} />)}
+        <input
+          placeholder='Teste'
+          onChange={(e) => setText(e.currentTarget.value)} 
+        />
+        {/* {photos.map(photo => <img key={photo.id} src={photo.urls.small} />)} */}
       </GridItem>
     </Grid>
   )
