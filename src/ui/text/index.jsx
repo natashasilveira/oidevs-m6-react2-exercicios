@@ -1,16 +1,24 @@
-// import { styles } from './styles'
+import styled, { css } from "styled-components"
 
-import * as S from './styles'
 // export const Text = (props) => {
-//   return (
-//     <div style={styles.title}>
-//       {props.children}
-//     </div>
-//   )
-// } 
+//   return <S.TextWrapper {...props}>{props.children}</S.TextWrapper>
+// }
 
+const textCss = css`  
+  color: ${(props) => (props.color || '#fff')};
+  font-weight: ${(props) => (props.bold ? '900' : '')};
+  ${(props) => (props.size === 'small' ? 'font-size: 12px' : '')}
+`;
 
+export const Text = styled.div`
+  ${textCss}
+`;
 
-export const Text = (props) => {
-  return <S.TextWrapper {...props}>{props.children}</S.TextWrapper>
-}
+export const TextLink = styled.a`
+  ${textCss};
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
