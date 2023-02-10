@@ -21,19 +21,30 @@ export const App = () => {
     makeRequest();
   }, []);
 
-  const transformedPhotos = React.useMemo(() => {
+  const allSmallPhotosMemoized = React.useMemo(() => {
     console.log('Entrou no useMemo')
     return 'Fotos Transformadas'
     // return photos.map(item => item.urls.small);
   }, [photos]);
 
-  const transformedPhotos2 = () => {
+  const allSmallPhotosNOTMemoized = () => {
     console.log('Oi - Trans 2');
-    return 'Transformed 2'
+    return photos.map(item => item.urls.small);
   }
 
-  console.log(transformedPhotos)
-  transformedPhotos2();
+  console.log(allSmallPhotosMemoized)
+  allSmallPhotosNOTMemoized();
+
+  // const onChangeHandler = (e) => {
+  //   console.log('Chamando set Text')
+  //   setText(e.currentTarget.value)
+  // }
+
+  const onChangeHandler = React.useCallback((e) => {
+    console.log('Chamando set Text')
+    console.log(photos)
+    setText(e.currentTarget.value)
+  }, [])
 
   return (
     <Grid templateColumns='20% 80%'>
@@ -41,11 +52,11 @@ export const App = () => {
         <Navbar />
       </GridItem>
       <GridItem>
+        <input placeholder='Text' 
+        onChange={onChangeHandler} 
+        />
         <Header />
         <HighLights />
-        <input placeholder='Text' 
-        onChange={(e) => setText(e.currentTarget.value)} 
-        />
         {photos.map(photo => <img key={photo.id} src={photo.urls.small} />)}
       </GridItem>
     </Grid>
