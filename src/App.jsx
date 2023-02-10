@@ -10,23 +10,30 @@ import React from 'react'
 export const App = () => {
 
   const [photos, setPhotos] = React.useState([]); 
-
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     const response = await fetcher('photos');
-  //     setPhotos((prevPhotos) => {
-  //       return [...prevPhotos, ...response]
-  //     });
-  //   };
-
-  //   makeRequest();
-  // }, []);
-
-  const [text, setText] = React.useState('');
+  const [text, setText] = React.useState('')
 
   useEffect(() => {
-    console.log(text);
-  }, [text])
+    const makeRequest = async () => {
+      const response = await fetcher('photos');
+      setPhotos(response);
+    };
+
+    makeRequest();
+  }, []);
+
+  const transformedPhotos = React.useMemo(() => {
+    console.log('Entrou no useMemo')
+    return 'Fotos Transformadas'
+    // return photos.map(item => item.urls.small);
+  }, [photos]);
+
+  const transformedPhotos2 = () => {
+    console.log('Oi - Trans 2');
+    return 'Transformed 2'
+  }
+
+  console.log(transformedPhotos)
+  transformedPhotos2();
 
   return (
     <Grid templateColumns='20% 80%'>
@@ -36,11 +43,10 @@ export const App = () => {
       <GridItem>
         <Header />
         <HighLights />
-        <input
-          placeholder='Teste'
-          onChange={(e) => setText(e.currentTarget.value)} 
+        <input placeholder='Text' 
+        onChange={(e) => setText(e.currentTarget.value)} 
         />
-        {/* {photos.map(photo => <img key={photo.id} src={photo.urls.small} />)} */}
+        {photos.map(photo => <img key={photo.id} src={photo.urls.small} />)}
       </GridItem>
     </Grid>
   )
