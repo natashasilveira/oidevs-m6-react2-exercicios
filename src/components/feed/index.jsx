@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { fetcher } from '../services'
 import * as S from './styles'
 import { Text } from '../../ui/text'
+import { Loading } from '../../ui/loading'
 
 export const Feed = () => {
   const [items, setItems] = useState([]);
@@ -10,18 +11,20 @@ export const Feed = () => {
 
   useEffect(() => {
     const makeRequest = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         const response = await fetcher('photos');
         setTimeout(() => {
-          
           setItems(response);
         }, 2000);
+        
       } catch (error) {
         console.log(`Deu Ruim: ${error}`);
         setHasError(true)
       } finally {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
       }
     }
 
@@ -40,7 +43,7 @@ export const Feed = () => {
 
   return (
     <S.Wrapper>
-      {isLoading && <Text>Carregando...</Text>}
+      {isLoading && <Loading></Loading>}
       {hasError && <Text>Deu Ruim Demais!</Text>}
       {items.map(item =>
         <S.Item key={item.id}>
