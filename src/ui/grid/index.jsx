@@ -10,6 +10,7 @@ export const Grid = styled.div`
 
 export const GridItem = styled.div`
   display: ${(props) => props.display};
-  height: 100vh;
+  grid-template-columns: ${(props) => props.templateColumns};;
+  height: fit-content;
   position: relative;
 `;
