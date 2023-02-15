@@ -14,11 +14,14 @@ export const Feed = () => {
         setIsLoading(true);
         const response = await fetcher('photos');
         setTimeout(() => {
-          setIsLoading(false);
+          
           setItems(response);
         }, 2000);
       } catch (error) {
         console.log(`Deu Ruim: ${error}`);
+        setHasError(true)
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -38,6 +41,7 @@ export const Feed = () => {
   return (
     <S.Wrapper>
       {isLoading && <Text>Carregando...</Text>}
+      {hasError && <Text>Deu Ruim Demais!</Text>}
       {items.map(item =>
         <S.Item key={item.id}>
           <S.Image src={item.urls.small} />
