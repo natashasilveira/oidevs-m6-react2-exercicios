@@ -4,7 +4,7 @@ import { Text } from '../text';
 export const Button = (props) => {
   return (
     <S.Wrapper {...props}>
-      <Text>{props.text}</Text>
+      <Text>{props.text || props.children}</Text>
     </S.Wrapper>
   );
 }
