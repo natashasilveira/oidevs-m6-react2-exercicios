@@ -1,6 +1,7 @@
 import { Title } from "../title"
 import { NavItem } from "../nav-item"
 import * as S from "./styles"
+import { Button } from "../../ui/button"
 
 const items = [
   'Página Inicial',
@@ -14,6 +15,12 @@ const items = [
 ]
 
 export const Navbar = (props) => {
+
+  const onCLickLoginHandler = () => {
+    console.log('CLICOU')
+    props.onClickLogin('login');
+  }
+
   return (
     <S.NavBarWrapper>
       <S.Box>
@@ -27,6 +34,7 @@ export const Navbar = (props) => {
         </S.Box>
       </S.Box>
       <NavItem text='Mais' />
+      <Button onClick={onCLickLoginHandler} text={"Ir Para Login"} />
     </S.NavBarWrapper>
   )
 }

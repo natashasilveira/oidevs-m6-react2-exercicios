@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetcher } from '../services'
+import { fetcher } from '../../services'
 import * as S from './styles'
 import { Text } from '../../ui/text'
 import { Loading } from '../../ui/loading'
